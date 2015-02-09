@@ -25,6 +25,16 @@
     class: "btn btn-primary" %>
 </div>
 
+<table>
+  <tr><th>Subjects in course</th><th></th></tr>
+  <% @subjects.each do |s| %>
+  <tr>
+    <td><%= s.name %></td>
+    <td><%= link_to "view", "#" %></td>
+  </tr>
+  <% end %>
+</table>
+
 <h1>
   List members is attend this course
 </h1>
@@ -40,4 +50,7 @@
 <%= link_to "Assign Members", new_admin_course_assignment_path(@course),
                                   class: "btn btn-primary" %>
 <br><br>
-<%= link_to "Back", admin_courses_path, class: "btn btn-primary" %>
+<div>
+  <%= link_to "Edit", edit_admin_course_path(@course) %> |
+  <%= link_to "Back", admin_courses_path %>
+</div>
