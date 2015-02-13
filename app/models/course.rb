@@ -9,7 +9,10 @@ class Course < ActiveRecord::Base
 
   has_many :course_subjects
   has_many :subjects, through: :course_subjects
+  has_many :course_users
+  has_many :users, through: :course_users
   accepts_nested_attributes_for :course_subjects, allow_destroy: true
+  accepts_nested_attributes_for :course_users, allow_destroy: true
 
   def end_at_must_greater_than_or_equal_to_begin_at
     if end_at < begin_at

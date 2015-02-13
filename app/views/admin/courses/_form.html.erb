@@ -26,9 +26,7 @@
     </table>
   </div>
 
-  <p>
-    Choice Subjects for Course
-  </p>
+  <p>Choice Subjects for Course</p>
 
   <% Subject.all.each do |subject| %>
     <%= f.fields_for :course_subjects, subject do |course_subject_builder| %>
@@ -43,6 +41,22 @@
       <%= course_subject_builder.hidden_field :id, value: nil %>
     <% end %>
   <% end %>
+
+  <p>Choice Users for Course</p>
   
+  <% User.all.each do |user| %>
+    <%= f.fields_for :course_users, user do |course_user_builder| %>
+      <%= course_user_builder.label :_destroy do %>
+        <p>
+          <%= user.name %>
+          <%= course_user_builder.check_box :_destroy, {checked: false}, false, true %>
+        </p>
+      <% end %>
+
+      <%= course_user_builder.hidden_field :user_id, value: user.id %>
+      <%= course_user_builder.hidden_field :id, value: nil %>
+    <% end %>
+  <% end %>
+
   <%= f.submit "Create new course", class: "btn btn-primary" %>
 <% end %>

@@ -5,19 +5,21 @@
     Course: <%= @course.name %>
   </h1>
 
-  <h4>
-    Description:
-  </h4>
+  <h4>Description:<%= @course.description %></h4>
+  <h3 class = "red" >Begin at: <%= @course.begin_at.to_date %></h3>
+  <h3 class = "red" >End at: <%= @course.end_at.to_date %></h3>
 
-  <h4>
-    <%= @course.description %>
-  </h4>
+  <p>List Users of Course</p>
+    <% @course.users.each do |user|%>
+      <li><%= user.name %></li>
+    <% end %>
+    
 
-  <h3 class = "green" >
-    Begin at: <%= @course.begin_at.to_date %>
-  </h3>
-
-  <h3 class = "red" >
-    End at: <%= @course.end_at.to_date %>
-  </h3>
+  <p>List Subjects of Course</p>
+    <% @course.subjects.each do |subject|%>
+      <li><%= subject.name %></li>
+    <% end %>
+    
 </div>
+
+<%= link_to 'Back', admin_courses_path %>

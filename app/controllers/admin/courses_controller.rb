@@ -12,6 +12,7 @@ class Admin::CoursesController < ApplicationController
   end
 
   def create
+
     @course = Course.new course_params
     if @course.save
       flash[:success] = "Create course successfully!"
@@ -24,6 +25,7 @@ class Admin::CoursesController < ApplicationController
   private
   def course_params
     params.require(:course).permit(:name, :description, :begin_at, :end_at,
-                    course_subjects_attributes: [:id, :subject_id, :_destroy])
+                    course_subjects_attributes: [:id, :subject_id, :_destroy],
+                    course_users_attributes: [:id, :user_id, :_destroy])
   end
 end
