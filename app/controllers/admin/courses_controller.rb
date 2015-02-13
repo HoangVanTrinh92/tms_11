@@ -50,7 +50,7 @@ class Admin::CoursesController < ApplicationController
   end
 
   def course_params
-    params.require(:course).permit(:name, :description, :begin_at, :end_at,
+    params.require(:course).permit(:name, :description, :begin_at, :end_at, :subject_ids[],
                                    course_subjects_attributes: [:id, :subject_id,:_destroy])
   end
 end

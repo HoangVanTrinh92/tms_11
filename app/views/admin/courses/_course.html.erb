@@ -23,4 +23,7 @@
                                     method: :delete, 
                                     data: {confirm: "You sure?"}) %>
   <th>
+  <th>
+    <%= link_to_if(current_user.admin?, "Assign Member", "#", class: 'btn btn-primary') %> &nbsp;
+  </th>
 </tr>

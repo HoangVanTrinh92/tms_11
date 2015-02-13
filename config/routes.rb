@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  get 'assign/new'
+
+  get 'assign/update'
+
+  get 'assign/destroy'
+
+  get 'assign/show'
+
+  resources :subjects
 
   root             'static_pages#home'
   get 'help'    => 'static_pages#help'
@@ -16,6 +25,7 @@ Rails.application.routes.draw do
   resources :courses do
     resources :users, only: [:index]
   end
+
   namespace :admin do
     resources :users
     resources :courses
